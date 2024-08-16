@@ -3,45 +3,31 @@ import Link from 'next/link';
 
 const Hero: React.FC = () => {
   return (
-    <>
-      <header className="bg-gray-100 py-5 rounded-b-3xl">
-        <div className="container mx-auto px-5">
-          <nav className="flex justify-between items-center">
-            <div className="text-2xl font-bold">Addis Finacials</div>
-            <ul className="flex space-x-5">
-              <li><Link href="#" className="text-gray-800">Why Us?</Link></li>
-              <li><Link href="#" className="text-gray-800">How it works?</Link></li>
-              <li><Link href="#" className="text-gray-800">Simulator and pricing</Link></li>
-              <li><Link href="#" className="text-gray-800">FAQ</Link></li>
-            </ul>
-            <div className="space-x-3">
-              <Link href="#" className="px-5 py-2 rounded-full border border-gray-800 text-gray-800">Register</Link>
-              <Link href="#" className="px-5 py-2 rounded-full bg-indigo-600 text-white">Log in</Link>
-            </div>
-          </nav>
+    <section className="bg-gradient-to-r from-indigo-600 to-blue-400 text-white py-20">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+        <div className="md:w-1/2 mb-10 md:mb-0">
+          <h1 className="text-6xl md:text-6xl font-bold mb-4 leading-tight">
+            Your Financial Freedom Starts Here
+          </h1>
+          <p className="text-xl md:text-2xl mb-6">
+            Expert-backed investing and high-yield savings solutions. 
+            Grow wealth, save smarter, and secure your future with AddisFinacials.
+          </p>
+          <Link href="/#get-started" className="bg-white text-indigo-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-100 transition duration-300">
+            Get Started
+          </Link>
         </div>
-      </header>
-      <main>
-        <section className="py-12">
-          <div className="container mx-auto px-5 flex items-center">
-            <div className="flex-1">
-              <h1 className="text-5xl font-bold mb-5">Make your money work with maximum profit</h1>
-              <p className="mb-8">We help transform investments into success stories through our innovative management strategies and cutting-edge analytics</p>
-              <Link href="#" className="px-5 py-2 rounded-full bg-indigo-600 text-white">Learn more</Link>
-            </div>
-            <div className="flex-1 text-right">
-              <Image 
-                src="/images/coins.jpeg" 
-                alt="Abstract financial illustration" 
-                width={500} 
-                height={300} 
-                className="rounded-3xl"
-              />
-            </div>
-          </div>
-        </section>
-      </main>
-    </>
+        <div className="md:w-1/2 md:pl-10">
+          <Image 
+            src="/images/man-and-coins-happy-face.jpeg" 
+            alt="Financial Growth Illustration" 
+            width={600} 
+            height={400} 
+            className="rounded-lg shadow-xl"
+          />
+        </div>
+      </div>
+    </section>
   );
 };
 
