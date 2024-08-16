@@ -15,7 +15,7 @@ const ProductCard: React.FC<{ imageSrc: string; title: string; description: stri
       <Image src={imageSrc} alt={title} width={500} height={300} className="rounded-2xl w-full h-auto" />
     </div>
     <div className={`w-full md:w-1/2 ${isReversed ? 'md:pr-8' : 'md:pl-8'}`}>
-      <h3 className="text-2xl md:text-3xl font-bold mb-2 md:mb-4">{title}</h3>
+      <h3 className="text-2xl md:text-3xl font-bold mb-2 md:mb-4 text-black">{title}</h3>
       <p className="text-lg md:text-xl text-gray-600">{description}</p>
     </div>
   </motion.div>
@@ -25,7 +25,7 @@ const ProductsServices: React.FC = () => {
   return (
     <section id='products' className="py-8 md:py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16">Our Products and Services</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16 text-black">Our Products and Services</h2>
         <ProductCard
           imageSrc="/images/investors.jpeg"
           title="Managed Portfolios"

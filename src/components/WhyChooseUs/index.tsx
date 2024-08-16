@@ -16,7 +16,7 @@ const ReasonCard: React.FC<{ icon: React.ReactNode; title: string; description: 
     transition={{ delay: index * 0.2, duration: 0.5 }}
   >
       <div className="text-4xl text-indigo-600 mb-4">{icon}</div>
-      <h3 className="text-2xl font-semibold mb-2">{title}</h3>
+      <h3 className="text-2xl font-semibold mb-2 text-black">{title}</h3>
       <p className="text-gray-600">{description}</p>
     </motion.div>
   );
@@ -28,7 +28,7 @@ const WhyChooseUs: React.FC = () => {
     <section id='why-us' ref={ref} className="py-16 bg-gradient-to-br from-indigo-100 to-purple-100">
       <div className="container mx-auto px-4">
         <motion.h2 
-          className="text-4xl font-bold text-center mb-12"
+          className="text-4xl font-bold text-center mb-12 text-black"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

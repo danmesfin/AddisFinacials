@@ -34,7 +34,7 @@ const TestimonialCard: React.FC<typeof testimonials[0]> = ({ name, role, image, 
     <div className="flex items-center mb-4">
       <Image src={image} alt={name} width={60} height={60} className="rounded-full mr-4" />
       <div>
-        <h3 className="font-semibold text-lg">{name}</h3>
+        <h3 className="font-semibold text-lg text-gray-900">{name}</h3>
         <p className="text-gray-600">{role}</p>
       </div>
     </div>
