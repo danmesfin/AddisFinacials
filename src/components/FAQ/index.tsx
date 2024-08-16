@@ -1,73 +1,71 @@
 'use client';
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaChartLine, FaUserTie, FaShieldAlt, FaHeadset } from 'react-icons/fa';
+import { useInView } from '../../hooks/useInView';
 
-const faqs = [
-  {
-    question: "How does AddisFinacials ensure the security of my investments?",
-    answer: "We employ bank-level security measures, including 256-bit encryption, two-factor authentication, and regular security audits to protect your investments and personal information."
-  },
-  {
-    question: "What are the fees associated with using AddisFinacials?",
-    answer: "Our fee structure is transparent and competitive. We charge a low annual fee of 0.25% on your invested balance, with no hidden costs or transaction fees."
-  },
-  {
-    question: "Can I withdraw my money at any time?",
-    answer: "Yes, you can withdraw your funds at any time without penalties. Most withdrawals are processed within 3-5 business days."
-  },
-  {
-    question: "How does AddisFinacials choose investments for my portfolio?",
-    answer: "We use advanced algorithms and expert insights to create diversified portfolios tailored to your risk tolerance and financial goals, focusing on low-cost ETFs across various asset classes."
-  },
-  {
-    question: "Is there a minimum investment amount required?",
-    answer: "To get started with AddisFinacials, you can begin with as little as $500. This low entry point allows more people to start their investment journey."
-  }
-];
-
-const FAQItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const ReasonCard: React.FC<{ icon: React.ReactNode; title: string; description: string; index: number; isInView: boolean }> = ({ icon, title, description, index, isInView }) => {
   return (
-    <div className="border-b border-gray-200 py-4">
-      <button
-        className="flex justify-between items-center w-full text-left"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <span className="text-lg font-semibold">{question}</span>
-        {isOpen ? <FaChevronUp /> : <FaChevronDown />}
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <p className="mt-2 text-gray-600">{answer}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+    <motion.div
+      className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ delay: index * 0.2, duration: 0.5 }}
+    >
+      <div className="text-4xl text-indigo-600 mb-4">{icon}</div>
+      <h3 className="text-2xl font-semibold mb-2 text-gray-800">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </motion.div>
   );
 };
 
-const FAQ: React.FC = () => {
+const WhyChooseUs: React.FC = () => {
+  const [ref, isInView] = useInView();
   return (
-    <section className="py-16 bg-gray-50">
+    <section id='why-us' ref={ref} className="py-16 bg-gradient-to-br from-indigo-100 to-purple-100">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
-        <div className="max-w-3xl mx-auto">
-          {faqs.map((faq, index) => (
-            <FAQItem key={index} question={faq.question} answer={faq.answer} />
-          ))}
+        <motion.h2 
+          className="text-4xl font-bold text-center mb-12 text-gray-800"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Why Choose AddisFinacials?
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <ReasonCard
+            icon={<FaChartLine />}
+            title="Low Fees, Higher Returns"
+            description="Our transparent, low-fee structure means more of your money stays invested."
+            isInView={isInView}
+            index={0}
+          />
+          <ReasonCard
+            icon={<FaUserTie />}
+            title="Expert-Backed Strategies"
+            description="Benefit from strategies developed by financial experts and data scientists."
+            index={1}
+            isInView={isInView}
+          />
+          <ReasonCard
+            icon={<FaShieldAlt />}
+            title="Bank-Level Security"
+            description="Your investments are protected with state-of-the-art security measures."
+            index={2}
+            isInView={isInView}
+          />
+          <ReasonCard
+            icon={<FaHeadset />}
+            title="24/7 Customer Support"
+            description="Our dedicated team is always ready to assist you with any questions."
+            index={3}
+            isInView={isInView}
+          />
         </div>
       </div>
     </section>
   );
 };
 
-export default FAQ;
+export default WhyChooseUs;
